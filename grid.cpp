@@ -35,3 +35,25 @@ void grid::generalas() {
         y += 16;
     }
 }
+void utkozesek(const Ball& ball){
+    int sor = ball.gety() / cellSize;
+    int oszlop = ball.getx() / cellSize;
+    for (int i = sor - 1; i <= sor + 1; i++)
+    {
+        for (int i = oszlop-1; i < oszlop + 1; i++)
+        {
+            std::vector<Kocka> kockakCellaban = this->cella_kockak(i,j);
+            for (const Kocka& kocka : kockakCellaban)
+            {
+                if(kocka.getx()-ball.getx() < -10 || kocka.getx()-ball.getx() < -10)
+                    ball.bouncex();
+                if(kocka.gety()-ball.gety() < -10 || kocka.gety()-ball.gety() < -10)
+                    ball.bouncey();
+            }
+            
+        }
+        
+    }
+    
+
+}
